@@ -41,8 +41,8 @@ jobs:
       -
         name: Build frontend
         run: |
-          docker exec node npm install
-          docker exec node npm run build
+          docker compose exec -t node npm install
+          docker compose exec -t node npm run build
       -
         name: Check HTTP reachability
         run: curl -v --fail-with-body http://localhost
