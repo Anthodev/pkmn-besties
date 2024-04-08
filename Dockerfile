@@ -53,14 +53,10 @@ ENV APP_ENV=dev XDEBUG_MODE=debug UID=${USER_ID:-1000} GID=${GROUP_ID:-1000}
 
 VOLUME /app/var/
 
-#RUN apk add --no-cache \
-#		bash \
-#		curl \
-#		shadow \
-#	;
 RUN apt-get install curl bash
 
 RUN curl -sS https://get.symfony.com/cli/installer | bash
+RUN mv /root/.symfony5/bin/symfony /usr/local/bin/symfony
 
 RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 
