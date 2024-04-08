@@ -53,14 +53,10 @@ ENV APP_ENV=dev XDEBUG_MODE=debug UID=${USER_ID:-1000} GID=${GROUP_ID:-1000}
 
 VOLUME /app/var/
 
-RUN apk add --no-cache \
-		bash \
-		curl \
-		shadow \
-	;
+RUN apt-get install curl bash
 
-RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.alpine.sh' | bash
-RUN apk add symfony-cli --no-cache
+RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | bash
+RUN apt install symfony-cli
 
 RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 
