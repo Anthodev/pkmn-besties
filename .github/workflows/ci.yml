@@ -39,6 +39,11 @@ jobs:
         name: Start services
         run: docker compose up --wait --no-build
       -
+        name: Build frontend
+        run: |
+          docker exec node npm install
+          docker exec node npm run build
+      -
         name: Check HTTP reachability
         run: curl -v --fail-with-body http://localhost
       -
@@ -57,9 +62,9 @@ jobs:
         run: symfony check:security
       -
         name: Static Analysis
-        if: false # Remove this line if PHPStan is installed
-        run: make stan
+        run: |
+          make stan
+          make ecs
       -
         name: Run Tests
-        if: false # Remove this line if PHPUnit or PestPHP is installed
         run: make test

@@ -1,4 +1,4 @@
-containerName = "symfony-php"
+containerName = "pkmn-besties"
 isContainerRunning := $(shell docker info > /dev/null 2>&1 && docker ps | grep $(containerName) > /dev/null 2>&1 && echo 1)
 user := $(shell id -u)
 group := $(shell id -g)

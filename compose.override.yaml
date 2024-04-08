@@ -24,5 +24,9 @@ services:
       - host.docker.internal:host-gateway
     tty: true
 
+  node:
+    environment:
+      NODE_ENV: development
+
 ###> symfony/mercure-bundle ###
 ###< symfony/mercure-bundle ###
