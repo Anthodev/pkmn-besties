@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - develop
   pull_request: ~
   workflow_dispatch: ~
 
@@ -63,8 +64,8 @@ jobs:
       -
         name: Static Analysis
         run: |
-          php vendor/bin/phpstan analyse
-          php vendor/bin/ecs check
+          docker compose exec -T php vendor/bin/phpstan analyse
+          docker compose exec -T php vendor/bin/ecs check
       -
         name: Run Tests
-        run: php vendor/bin/phpunit -d memory_limit=128M
+        run: docker compose exec -T php vendor/bin/phpunit -d memory_limit=128M
