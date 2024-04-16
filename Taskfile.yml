@@ -15,7 +15,7 @@ vars:
     DOCKER_COMPOSE_UP: "{{.DOCKER_COMPOSE}} up -d"
     DOCKER_COMPOSE_STOP: "{{.DOCKER_COMPOSE}} stop"
     CONTAINER_SERVICE_PHP_NAME: php
-    CONTAINER_PHP_NAME: pb-app-php-1
+    CONTAINER_PHP_NAME: pkmn-besties-php-1
     IS_CONTAINER_RUNNING: "{{.DOCKER}} ps {{.CONTAINER_SERVICE_PHP_NAME}} | grep {{.CONTAINER_SERVICE_PHP_NAME}}"
 
 tasks:
@@ -122,7 +122,7 @@ tasks:
             - t
         desc: "Run the tests"
         cmds:
-            - "{{.DOCKER_COMPOSE}} run -e APP_ENV=test php php vendor/bin/pest -d memory_limit=-1"
+            - "{{.DOCKER_COMPOSE}} run -e APP_ENV=test php php vendor/bin/phpunit -d memory_limit=-1"
         status:
             - "{{.IS_CONTAINER_RUNNING}}"
         silent: false

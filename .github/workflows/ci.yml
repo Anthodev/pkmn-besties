@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - develop
   pull_request: ~
   workflow_dispatch: ~
 
@@ -39,6 +40,11 @@ jobs:
         name: Start services
         run: docker compose up --wait --no-build
       -
+        name: Build frontend
+        run: |
+          docker compose exec -t node npm install
+          docker compose exec -t node npm run build
+      -
         name: Check HTTP reachability
         run: curl -v --fail-with-body http://localhost
       -
@@ -57,9 +63,9 @@ jobs:
         run: symfony check:security
       -
         name: Static Analysis
-        if: false # Remove this line if PHPStan is installed
-        run: make stan
+        run: |
+          docker compose exec -T php php vendor/bin/phpstan analyse
+          docker compose exec -T php php vendor/bin/ecs check
       -
         name: Run Tests
-        if: false # Remove this line if PHPUnit or PestPHP is installed
-        run: make test
+        run: docker compose exec -T php php vendor/bin/phpunit -d memory_limit=128M

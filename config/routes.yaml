@@ -1,5 +1,5 @@
-controllers:
+home_controllers:
     resource:
-        path: ../src/Controller/
-        namespace: App\Controller
+        path: ../src/Domain/Home/Action/
+        namespace: App\Domain\Home\Action
     type: attribute
