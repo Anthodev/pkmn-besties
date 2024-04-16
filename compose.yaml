@@ -22,7 +22,7 @@ services:
       - caddy_config:/config
     ports:
       # HTTP
-      - target: 5173
+      - target: 80
         published: ${HTTP_PORT:-80}
         protocol: tcp
       # HTTPS
