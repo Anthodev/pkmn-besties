@@ -11,7 +11,7 @@ use Symfony\Component\HttpKernel\Attribute\AsController;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[AsController]
-class GetHome extends AbstractController
+class GetFront extends AbstractController
 {
     #[Route('/', name: 'home', methods: HttpMethodEnum::GET->value)]
     public function indexAction(): Response

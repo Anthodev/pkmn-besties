@@ -21,7 +21,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	gettext \
 	git \
     npm \
+	nodejs \
+    npm \
 	&& rm -rf /var/lib/apt/lists/*
+
+RUN npm install -g pnpm
 
 RUN set -eux; \
 	install-php-extensions \

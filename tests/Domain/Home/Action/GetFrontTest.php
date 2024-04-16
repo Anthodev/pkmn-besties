@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Domain\Home\Action;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class GetHomeTest extends WebTestCase
+class GetFrontTest extends WebTestCase
 {
     public function testInvokeGetHome(): void
     {

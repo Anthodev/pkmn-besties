@@ -34,19 +34,6 @@ services:
         published: ${HTTP3_PORT:-443}
         protocol: udp
 
-  node:
-    image: node:lts-alpine
-    tty: true
-    working_dir: /app
-    depends_on:
-      - php
-    volumes:
-      - ./:/app
-    ports:
-      - target: 5173
-        published: 5173
-        protocol: tcp
-
 # Mercure is installed as a Caddy module, prevent the Flex recipe from installing another service
 ###> symfony/mercure-bundle ###
 ###< symfony/mercure-bundle ###
