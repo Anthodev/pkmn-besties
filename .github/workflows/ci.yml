@@ -63,8 +63,8 @@ jobs:
       -
         name: Static Analysis
         run: |
-          make stan
-          make ecs
+          php vendor/bin/phpstan analyse
+          php vendor/bin/ecs check
       -
         name: Run Tests
-        run: make test
+        run: php vendor/bin/phpunit -d memory_limit=128M
