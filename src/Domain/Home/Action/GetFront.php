@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Domain\Home\Action;
 
-use App\Application\Common\Enum\HttpMethodEnum;
+use App\Application\Enum\HttpMethodEnum;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\AsController;

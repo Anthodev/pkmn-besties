@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Domain\Home\Action;
+namespace App\Tests\Functional\Home\Action;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

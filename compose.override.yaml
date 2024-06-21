@@ -22,23 +22,40 @@ services:
     extra_hosts:
       # Ensure that host.docker.internal is correctly defined on Linux
       - host.docker.internal:host-gateway
+    ports:
+      # HTTP
+      - target: 80
+        published: ${HTTP_PORT:-80}
+        protocol: tcp
+      # HTTPS
+      - target: 443
+        published: ${HTTPS_PORT:-443}
+        protocol: tcp
+      # HTTP/3
+      - target: 443
+        published: ${HTTP3_PORT:-443}
+        protocol: udp
+      # VITE FRONTEND
+      - target: 5173
+        published: ${VITE_PORT:-5173}
+        protocol: tcp
     tty: true
   
-  node:
-    image: node:lts-alpine
-    tty: true
-    working_dir: /app
-    depends_on:
-      - php
-    volumes:
-      - ./:/app
-    environment:
-      NODE_ENV: development
-    ports:
-      - target: 5173
-        published: 5173
-        protocol: tcp
-    command: sh -c "npm install && npm run build && npm run dev"
+#  node:
+#    image: node:lts-alpine
+#    tty: true
+#    working_dir: /app
+#    depends_on:
+#      - php
+#    volumes:
+#      - ./:/app
+#    environment:
+#      NODE_ENV: development
+#    ports:
+#      - target: 5173
+#        published: 5173
+#        protocol: tcp
+#    command: sh -c "npm install && npm run build && npm run dev"
 
 ###> symfony/mercure-bundle ###
 ###< symfony/mercure-bundle ###

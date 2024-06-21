@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Application\Common\Enum;
+namespace App\Application\Enum;
 
 enum HttpMethodEnum: string
 {
